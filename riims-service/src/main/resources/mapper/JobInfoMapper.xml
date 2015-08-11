@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkntv.riims.core.repository.JobInfoRepository" >
+  <resultMap id="BaseResultMap" type="com.hkntv.riims.core.entity.JobInfo" >
+    <id column="guid" property="guid" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    <result column="line_id" property="lineId" jdbcType="VARCHAR" />
+    <result column="track_division" property="trackDivision" jdbcType="VARCHAR" />
+    <result column="work_area_id" property="workAreaId" jdbcType="VARCHAR" />
+    <result column="line_name" property="lineName" jdbcType="VARCHAR" />
+    <result column="line_direction" property="lineDirection" jdbcType="VARCHAR" />
+    <result column="track_id" property="trackId" jdbcType="VARCHAR" />
+    <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+    <result column="turnout_id" property="turnoutId" jdbcType="VARCHAR" />
+    <result column="weld_line_id" property="weldLineId" jdbcType="VARCHAR" />
+    <result column="mileage" property="mileage" jdbcType="DOUBLE" />
+    <result column="left_right_track" property="leftRightTrack" jdbcType="VARCHAR" />
+    <result column="entering_date" property="enteringDate" jdbcType="DATE" />
+    <result column="entering_person" property="enteringPerson" jdbcType="VARCHAR" />
+    <result column="device_id" property="deviceId" jdbcType="VARCHAR" />
+    <result column="slight_wound_number" property="slightWoundNumber" jdbcType="INTEGER" />
+    <result column="severe_wound_number" property="severeWoundNumber" jdbcType="INTEGER" />
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    guid, unit_id, line_id, track_division, work_area_id, line_name, line_direction, 
+    track_id, station_id, turnout_id, weld_line_id, mileage, left_right_track, entering_date, 
+    entering_person, device_id, slight_wound_number, severe_wound_number, task_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jobinfo
+    where guid = #{guid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jobinfo
+    where guid = #{guid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hkntv.riims.core.entity.JobInfo" >
+    insert into jobinfo (guid, unit_id, line_id, 
+      track_division, work_area_id, line_name, 
+      line_direction, track_id, station_id, 
+      turnout_id, weld_line_id, mileage, 
+      left_right_track, entering_date, entering_person, 
+      device_id, slight_wound_number, severe_wound_number, 
+      task_id)
+    values (#{guid,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{lineId,jdbcType=VARCHAR}, 
+      #{trackDivision,jdbcType=VARCHAR}, #{workAreaId,jdbcType=VARCHAR}, #{lineName,jdbcType=VARCHAR}, 
+      #{lineDirection,jdbcType=VARCHAR}, #{trackId,jdbcType=VARCHAR}, #{stationId,jdbcType=VARCHAR}, 
+      #{turnoutId,jdbcType=VARCHAR}, #{weldLineId,jdbcType=VARCHAR}, #{mileage,jdbcType=DOUBLE}, 
+      #{leftRightTrack,jdbcType=VARCHAR}, #{enteringDate,jdbcType=DATE}, #{enteringPerson,jdbcType=VARCHAR}, 
+      #{deviceId,jdbcType=VARCHAR}, #{slightWoundNumber,jdbcType=INTEGER}, #{severeWoundNumber,jdbcType=INTEGER}, 
+      #{taskId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hkntv.riims.core.entity.JobInfo" >
+    insert into jobinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        guid,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="lineId != null" >
+        line_id,
+      </if>
+      <if test="trackDivision != null" >
+        track_division,
+      </if>
+      <if test="workAreaId != null" >
+        work_area_id,
+      </if>
+      <if test="lineName != null" >
+        line_name,
+      </if>
+      <if test="lineDirection != null" >
+        line_direction,
+      </if>
+      <if test="trackId != null" >
+        track_id,
+      </if>
+      <if test="stationId != null" >
+        station_id,
+      </if>
+      <if test="turnoutId != null" >
+        turnout_id,
+      </if>
+      <if test="weldLineId != null" >
+        weld_line_id,
+      </if>
+      <if test="mileage != null" >
+        mileage,
+      </if>
+      <if test="leftRightTrack != null" >
+        left_right_track,
+      </if>
+      <if test="enteringDate != null" >
+        entering_date,
+      </if>
+      <if test="enteringPerson != null" >
+        entering_person,
+      </if>
+      <if test="deviceId != null" >
+        device_id,
+      </if>
+      <if test="slightWoundNumber != null" >
+        slight_wound_number,
+      </if>
+      <if test="severeWoundNumber != null" >
+        severe_wound_number,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="lineId != null" >
+        #{lineId,jdbcType=VARCHAR},
+      </if>
+      <if test="trackDivision != null" >
+        #{trackDivision,jdbcType=VARCHAR},
+      </if>
+      <if test="workAreaId != null" >
+        #{workAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="lineName != null" >
+        #{lineName,jdbcType=VARCHAR},
+      </if>
+      <if test="lineDirection != null" >
+        #{lineDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="trackId != null" >
+        #{trackId,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="turnoutId != null" >
+        #{turnoutId,jdbcType=VARCHAR},
+      </if>
+      <if test="weldLineId != null" >
+        #{weldLineId,jdbcType=VARCHAR},
+      </if>
+      <if test="mileage != null" >
+        #{mileage,jdbcType=DOUBLE},
+      </if>
+      <if test="leftRightTrack != null" >
+        #{leftRightTrack,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringDate != null" >
+        #{enteringDate,jdbcType=DATE},
+      </if>
+      <if test="enteringPerson != null" >
+        #{enteringPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="slightWoundNumber != null" >
+        #{slightWoundNumber,jdbcType=INTEGER},
+      </if>
+      <if test="severeWoundNumber != null" >
+        #{severeWoundNumber,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hkntv.riims.core.entity.JobInfo" >
+    update jobinfo
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="lineId != null" >
+        line_id = #{lineId,jdbcType=VARCHAR},
+      </if>
+      <if test="trackDivision != null" >
+        track_division = #{trackDivision,jdbcType=VARCHAR},
+      </if>
+      <if test="workAreaId != null" >
+        work_area_id = #{workAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="lineName != null" >
+        line_name = #{lineName,jdbcType=VARCHAR},
+      </if>
+      <if test="lineDirection != null" >
+        line_direction = #{lineDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="trackId != null" >
+        track_id = #{trackId,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        station_id = #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="turnoutId != null" >
+        turnout_id = #{turnoutId,jdbcType=VARCHAR},
+      </if>
+      <if test="weldLineId != null" >
+        weld_line_id = #{weldLineId,jdbcType=VARCHAR},
+      </if>
+      <if test="mileage != null" >
+        mileage = #{mileage,jdbcType=DOUBLE},
+      </if>
+      <if test="leftRightTrack != null" >
+        left_right_track = #{leftRightTrack,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringDate != null" >
+        entering_date = #{enteringDate,jdbcType=DATE},
+      </if>
+      <if test="enteringPerson != null" >
+        entering_person = #{enteringPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="slightWoundNumber != null" >
+        slight_wound_number = #{slightWoundNumber,jdbcType=INTEGER},
+      </if>
+      <if test="severeWoundNumber != null" >
+        severe_wound_number = #{severeWoundNumber,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hkntv.riims.core.entity.JobInfo" >
+    update jobinfo
+    set unit_id = #{unitId,jdbcType=VARCHAR},
+      line_id = #{lineId,jdbcType=VARCHAR},
+      track_division = #{trackDivision,jdbcType=VARCHAR},
+      work_area_id = #{workAreaId,jdbcType=VARCHAR},
+      line_name = #{lineName,jdbcType=VARCHAR},
+      line_direction = #{lineDirection,jdbcType=VARCHAR},
+      track_id = #{trackId,jdbcType=VARCHAR},
+      station_id = #{stationId,jdbcType=VARCHAR},
+      turnout_id = #{turnoutId,jdbcType=VARCHAR},
+      weld_line_id = #{weldLineId,jdbcType=VARCHAR},
+      mileage = #{mileage,jdbcType=DOUBLE},
+      left_right_track = #{leftRightTrack,jdbcType=VARCHAR},
+      entering_date = #{enteringDate,jdbcType=DATE},
+      entering_person = #{enteringPerson,jdbcType=VARCHAR},
+      device_id = #{deviceId,jdbcType=VARCHAR},
+      slight_wound_number = #{slightWoundNumber,jdbcType=INTEGER},
+      severe_wound_number = #{severeWoundNumber,jdbcType=INTEGER},
+      task_id = #{taskId,jdbcType=VARCHAR}
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectCount" resultType="java.lang.Integer" parameterType="com.hkntv.riims.core.entity.JobInfo" >
+    select count(*) from jobinfo
+    <where >
+      <if test="guid != null" >
+        and guid = #{guid,jdbcType=VARCHAR}
+      </if>
+      <if test="unitId != null" >
+        and unit_id = #{unitId,jdbcType=VARCHAR}
+      </if>
+      <if test="lineId != null" >
+        and line_id = #{lineId,jdbcType=VARCHAR}
+      </if>
+      <if test="trackDivision != null" >
+        and track_division = #{trackDivision,jdbcType=VARCHAR}
+      </if>
+      <if test="workAreaId != null" >
+        and work_area_id = #{workAreaId,jdbcType=VARCHAR}
+      </if>
+      <if test="lineName != null" >
+        and line_name = #{lineName,jdbcType=VARCHAR}
+      </if>
+      <if test="lineDirection != null" >
+        and line_direction = #{lineDirection,jdbcType=VARCHAR}
+      </if>
+      <if test="trackId != null" >
+        and track_id = #{trackId,jdbcType=VARCHAR}
+      </if>
+      <if test="stationId != null" >
+        and station_id = #{stationId,jdbcType=VARCHAR}
+      </if>
+      <if test="turnoutId != null" >
+        and turnout_id = #{turnoutId,jdbcType=VARCHAR}
+      </if>
+      <if test="weldLineId != null" >
+        and weld_line_id = #{weldLineId,jdbcType=VARCHAR}
+      </if>
+      <if test="mileage != null" >
+        and mileage = #{mileage,jdbcType=DOUBLE}
+      </if>
+      <if test="leftRightTrack != null" >
+        and left_right_track = #{leftRightTrack,jdbcType=VARCHAR}
+      </if>
+      <if test="enteringDate != null" >
+        and entering_date = #{enteringDate,jdbcType=DATE}
+      </if>
+      <if test="enteringPerson != null" >
+        and entering_person = #{enteringPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="deviceId != null" >
+        and device_id = #{deviceId,jdbcType=VARCHAR}
+      </if>
+      <if test="slightWoundNumber != null" >
+        and slight_wound_number = #{slightWoundNumber,jdbcType=INTEGER}
+      </if>
+      <if test="severeWoundNumber != null" >
+        and severe_wound_number = #{severeWoundNumber,jdbcType=INTEGER}
+      </if>
+      <if test="taskId != null" >
+        and task_id = #{taskId,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectPage" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from jobinfo where 1 = 1 
+    <if test="param1.guid != null" >
+      and guid = #{param1.guid,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.unitId != null" >
+      and unit_id = #{param1.unitId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.lineId != null" >
+      and line_id = #{param1.lineId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.trackDivision != null" >
+      and track_division = #{param1.trackDivision,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.workAreaId != null" >
+      and work_area_id = #{param1.workAreaId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.lineName != null" >
+      and line_name = #{param1.lineName,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.lineDirection != null" >
+      and line_direction = #{param1.lineDirection,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.trackId != null" >
+      and track_id = #{param1.trackId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.stationId != null" >
+      and station_id = #{param1.stationId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.turnoutId != null" >
+      and turnout_id = #{param1.turnoutId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.weldLineId != null" >
+      and weld_line_id = #{param1.weldLineId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.mileage != null" >
+      and mileage = #{param1.mileage,jdbcType=DOUBLE}
+    </if>
+    <if test="param1.leftRightTrack != null" >
+      and left_right_track = #{param1.leftRightTrack,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.enteringDate != null" >
+      and entering_date = #{param1.enteringDate,jdbcType=DATE}
+    </if>
+    <if test="param1.enteringPerson != null" >
+      and entering_person = #{param1.enteringPerson,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.deviceId != null" >
+      and device_id = #{param1.deviceId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.slightWoundNumber != null" >
+      and slight_wound_number = #{param1.slightWoundNumber,jdbcType=INTEGER}
+    </if>
+    <if test="param1.severeWoundNumber != null" >
+      and severe_wound_number = #{param1.severeWoundNumber,jdbcType=INTEGER}
+    </if>
+    <if test="param1.taskId != null" >
+      and task_id = #{param1.taskId,jdbcType=VARCHAR}
+    </if>
+    <if test="param2.sort != null" >
+      order by 
+      <foreach collection="param2.sort" item="order" separator="," >
+        ${order.property} ${order.direction}
+      </foreach>
+    </if>
+    <if test="param2.offset >= 0 and param2.pageSize > 0" >
+      limit ${param2.offset}, ${param2.pageSize}
+    </if>
+  </select>
+</mapper>

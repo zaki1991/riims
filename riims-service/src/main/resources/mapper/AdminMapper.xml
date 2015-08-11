@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkntv.riims.core.repository.AdminRepository" >
+  <resultMap id="BaseResultMap" type="com.hkntv.riims.core.entity.Admin" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="sys_level" property="sysLevel" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <result column="leading_official" property="leadingOfficial" jdbcType="VARCHAR" />
+    <result column="user_job" property="userJob" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, category, sys_level, name, nickname, user_pwd, leading_official, user_job, 
+    phone_number, birthday, user_sex
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from admin
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hkntv.riims.core.entity.Admin" >
+    insert into admin (id, category, sys_level, 
+      name, nickname, user_pwd, 
+      leading_official, user_job, phone_number, 
+      birthday, user_sex)
+    values (#{id,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{sysLevel,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+      #{leadingOfficial,jdbcType=VARCHAR}, #{userJob,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE}, #{userSex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hkntv.riims.core.entity.Admin" >
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="sysLevel != null" >
+        sys_level,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="userPwd != null" >
+        user_pwd,
+      </if>
+      <if test="leadingOfficial != null" >
+        leading_official,
+      </if>
+      <if test="userJob != null" >
+        user_job,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="sysLevel != null" >
+        #{sysLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="leadingOfficial != null" >
+        #{leadingOfficial,jdbcType=VARCHAR},
+      </if>
+      <if test="userJob != null" >
+        #{userJob,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hkntv.riims.core.entity.Admin" >
+    update admin
+    <set >
+      <if test="category != null" >
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="sysLevel != null" >
+        sys_level = #{sysLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="leadingOfficial != null" >
+        leading_official = #{leadingOfficial,jdbcType=VARCHAR},
+      </if>
+      <if test="userJob != null" >
+        user_job = #{userJob,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hkntv.riims.core.entity.Admin" >
+    update admin
+    set category = #{category,jdbcType=VARCHAR},
+      sys_level = #{sysLevel,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      leading_official = #{leadingOfficial,jdbcType=VARCHAR},
+      user_job = #{userJob,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      user_sex = #{userSex,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectCount" resultType="java.lang.Integer" parameterType="com.hkntv.riims.core.entity.Admin" >
+    select count(*) from admin
+    <where >
+      <if test="id != null" >
+        and id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="category != null" >
+        and category = #{category,jdbcType=VARCHAR}
+      </if>
+      <if test="sysLevel != null" >
+        and sys_level = #{sysLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null" >
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="nickname != null" >
+        and nickname = #{nickname,jdbcType=VARCHAR}
+      </if>
+      <if test="userPwd != null" >
+        and user_pwd = #{userPwd,jdbcType=VARCHAR}
+      </if>
+      <if test="leadingOfficial != null" >
+        and leading_official = #{leadingOfficial,jdbcType=VARCHAR}
+      </if>
+      <if test="userJob != null" >
+        and user_job = #{userJob,jdbcType=VARCHAR}
+      </if>
+      <if test="phoneNumber != null" >
+        and phone_number = #{phoneNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="birthday != null" >
+        and birthday = #{birthday,jdbcType=DATE}
+      </if>
+      <if test="userSex != null" >
+        and user_sex = #{userSex,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectPage" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin where 1 = 1 
+    <if test="param1.id != null" >
+      and id = #{param1.id,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.category != null" >
+      and category = #{param1.category,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.sysLevel != null" >
+      and sys_level = #{param1.sysLevel,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.name != null" >
+      and name = #{param1.name,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.nickname != null" >
+      and nickname = #{param1.nickname,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.userPwd != null" >
+      and user_pwd = #{param1.userPwd,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.leadingOfficial != null" >
+      and leading_official = #{param1.leadingOfficial,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.userJob != null" >
+      and user_job = #{param1.userJob,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.phoneNumber != null" >
+      and phone_number = #{param1.phoneNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.birthday != null" >
+      and birthday = #{param1.birthday,jdbcType=DATE}
+    </if>
+    <if test="param1.userSex != null" >
+      and user_sex = #{param1.userSex,jdbcType=VARCHAR}
+    </if>
+    <if test="param2.sort != null" >
+      order by 
+      <foreach collection="param2.sort" item="order" separator="," >
+        ${order.property} ${order.direction}
+      </foreach>
+    </if>
+    <if test="param2.offset >= 0 and param2.pageSize > 0" >
+      limit ${param2.offset}, ${param2.pageSize}
+    </if>
+  </select>
+</mapper>

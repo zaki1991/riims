@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkntv.riims.core.repository.PersonRepository" >
+  <resultMap id="BaseResultMap" type="com.hkntv.riims.core.entity.Person" >
+    <id column="guid" property="guid" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="work_id" property="workId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="identity_card_id" property="identityCardId" jdbcType="VARCHAR" />
+    <result column="literacy" property="literacy" jdbcType="VARCHAR" />
+    <result column="team_id" property="teamId" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="entering_date" property="enteringDate" jdbcType="DATE" />
+    <result column="entering_person" property="enteringPerson" jdbcType="VARCHAR" />
+    <result column="entering_person_phone_number" property="enteringPersonPhoneNumber" jdbcType="VARCHAR" />
+    <result column="department_id" property="departmentId" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    guid, password, work_id, name, identity_card_id, literacy, team_id, birthday, phone_number, 
+    entering_date, entering_person, entering_person_phone_number,
+    department_id, sex, job
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from person
+    where guid = #{guid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByWorkId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from person
+    where work_id = #{workId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from person
+    where guid = #{guid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hkntv.riims.core.entity.Person" >
+    insert into person (guid, password, work_id, 
+      name, identity_card_id, literacy, 
+      team_id, birthday, phone_number, 
+      entering_date, entering_person, entering_person_phone_number,
+      department_id, sex, job
+      )
+    values (#{guid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{workId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{identityCardId,jdbcType=VARCHAR}, #{literacy,jdbcType=VARCHAR}, 
+      #{teamId,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{enteringDate,jdbcType=DATE}, #{enteringPerson,jdbcType=VARCHAR}, #{enteringPersonPhoneNumber,jdbcType=VARCHAR},
+      #{departmentId,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hkntv.riims.core.entity.Person" >
+    insert into person
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        guid,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="workId != null" >
+        work_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="identityCardId != null" >
+        identity_card_id,
+      </if>
+      <if test="literacy != null" >
+        literacy,
+      </if>
+      <if test="teamId != null" >
+        team_id,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="enteringDate != null" >
+        entering_date,
+      </if>
+      <if test="enteringPerson != null" >
+        entering_person,
+      </if>
+      <if test="enteringPersonPhoneNumber != null" >
+        entering_person_phone_number,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="job != null" >
+        job,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="workId != null" >
+        #{workId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCardId != null" >
+        #{identityCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="literacy != null" >
+        #{literacy,jdbcType=VARCHAR},
+      </if>
+      <if test="teamId != null" >
+        #{teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringDate != null" >
+        #{enteringDate,jdbcType=DATE},
+      </if>
+      <if test="enteringPerson != null" >
+        #{enteringPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringPersonPhoneNumber != null" >
+        #{enteringPersonPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hkntv.riims.core.entity.Person" >
+    update person
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="workId != null" >
+        work_id = #{workId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCardId != null" >
+        identity_card_id = #{identityCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="literacy != null" >
+        literacy = #{literacy,jdbcType=VARCHAR},
+      </if>
+      <if test="teamId != null" >
+        team_id = #{teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringDate != null" >
+        entering_date = #{enteringDate,jdbcType=DATE},
+      </if>
+      <if test="enteringPerson != null" >
+        entering_person = #{enteringPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringPersonPhoneNumber != null" >
+        entering_person_phone_number = #{enteringPersonPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hkntv.riims.core.entity.Person" >
+    update person
+    set password = #{password,jdbcType=VARCHAR},
+      work_id = #{workId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      identity_card_id = #{identityCardId,jdbcType=VARCHAR},
+      literacy = #{literacy,jdbcType=VARCHAR},
+      team_id = #{teamId,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      entering_date = #{enteringDate,jdbcType=DATE},
+      entering_person = #{enteringPerson,jdbcType=VARCHAR},
+      entering_person_phone_number = #{enteringPersonPhoneNumber,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR}
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectCount" resultType="java.lang.Integer" parameterType="com.hkntv.riims.core.entity.Person" >
+    select count(*) from person
+    <where >
+      <if test="guid != null" >
+        and guid = #{guid,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null" >
+        and password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="workId != null" >
+        and work_id = #{workId,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null" >
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="identityCardId != null" >
+        and identity_card_id = #{identityCardId,jdbcType=VARCHAR}
+      </if>
+      <if test="literacy != null" >
+        and literacy = #{literacy,jdbcType=VARCHAR}
+      </if>
+      <if test="teamId != null" >
+        and team_id = #{teamId,jdbcType=VARCHAR}
+      </if>
+      <if test="birthday != null" >
+        and birthday = #{birthday,jdbcType=DATE}
+      </if>
+      <if test="phoneNumber != null" >
+        and phone_number = #{phoneNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="enteringDate != null" >
+        and entering_date = #{enteringDate,jdbcType=DATE}
+      </if>
+      <if test="enteringPerson != null" >
+        and entering_person = #{enteringPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="enteringPersonPhoneNumber != null" >
+        and entering_person_phone_number = #{enteringPersonPhoneNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="departmentId != null" >
+        and department_id = #{departmentId,jdbcType=VARCHAR}
+      </if>
+      <if test="sex != null" >
+        and sex = #{sex,jdbcType=VARCHAR}
+      </if>
+      <if test="job != null" >
+        and job = #{job,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectPage" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from person where 1 = 1 
+    <if test="param1.guid != null" >
+      and guid = #{param1.guid,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.password != null" >
+      and password = #{param1.password,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.workId != null" >
+      and work_id = #{param1.workId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.name != null" >
+      and name = #{param1.name,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.identityCardId != null" >
+      and identity_card_id = #{param1.identityCardId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.literacy != null" >
+      and literacy = #{param1.literacy,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.teamId != null" >
+      and team_id = #{param1.teamId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.birthday != null" >
+      and birthday = #{param1.birthday,jdbcType=DATE}
+    </if>
+    <if test="param1.phoneNumber != null" >
+      and phone_number = #{param1.phoneNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.enteringDate != null" >
+      and entering_date = #{param1.enteringDate,jdbcType=DATE}
+    </if>
+    <if test="param1.enteringPerson != null" >
+      and entering_person = #{param1.enteringPerson,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.enteringPersonPhoneNumber != null" >
+      and entering_person_phone_number = #{param1.enteringPersonPhoneNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.departmentId != null" >
+      and department_id = #{param1.departmentId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.sex != null" >
+      and sex = #{param1.sex,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.job != null" >
+      and job = #{param1.job,jdbcType=VARCHAR}
+    </if>
+    <if test="param2.sort != null" >
+      order by 
+      <foreach collection="param2.sort" item="order" separator="," >
+        ${order.property} ${order.direction}
+      </foreach>
+    </if>
+    <if test="param2.offset >= 0 and param2.pageSize > 0" >
+      limit ${param2.offset}, ${param2.pageSize}
+    </if>
+  </select>
+</mapper>

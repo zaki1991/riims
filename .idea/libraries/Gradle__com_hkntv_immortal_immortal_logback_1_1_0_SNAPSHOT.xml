@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.hkntv.immortal:immortal-logback:1.1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hkntv.immortal/immortal-logback/1.1.0-SNAPSHOT/f9bd40ee8f98ec6effc871cab72a2dcdfd21b05a/immortal-logback-1.1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hkntv.immortal/immortal-logback/1.1.0-SNAPSHOT/d55476531655b9fb3b0a9c76b9794c8421b651af/immortal-logback-1.1.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

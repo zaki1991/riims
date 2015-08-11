@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/riims.iml" filepath="$PROJECT_DIR$/riims.iml" />
+      <module fileurl="file://$PROJECT_DIR$/riims-service/riims-service.iml" filepath="$PROJECT_DIR$/riims-service/riims-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/riims-service-api/riims-service-api.iml" filepath="$PROJECT_DIR$/riims-service-api/riims-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/riims-webapp/riims-webapp.iml" filepath="$PROJECT_DIR$/riims-webapp/riims-webapp.iml" />
+    </modules>
+  </component>
+</project>

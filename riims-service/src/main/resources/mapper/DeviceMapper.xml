@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkntv.riims.core.repository.DeviceRepository" >
+  <resultMap id="BaseResultMap" type="com.hkntv.riims.core.entity.Device" >
+    <id column="guid" property="guid" jdbcType="VARCHAR" />
+    <result column="device_id" property="deviceId" jdbcType="VARCHAR" />
+    <result column="device_type" property="deviceType" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="device_version" property="deviceVersion" jdbcType="VARCHAR" />
+    <result column="bought_date" property="boughtDate" jdbcType="DATE" />
+    <result column="leading_official" property="leadingOfficial" jdbcType="VARCHAR" />
+    <result column="production_date" property="productionDate" jdbcType="DATE" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="yearly_inspection_status" property="yearlyInspectionStatus" jdbcType="VARCHAR" />
+    <result column="quaterly_inspection_date" property="quaterlyInspectionDate" jdbcType="DATE" />
+    <result column="monthly_inspection_date" property="monthlyInspectionDate" jdbcType="DATE" />
+    <result column="manufacturer" property="manufacturer" jdbcType="VARCHAR" />
+    <result column="is_rebuild_device" property="isRebuildDevice" jdbcType="VARCHAR" />
+    <result column="maintenance_period" property="maintenancePeriod" jdbcType="DATE" />
+    <result column="plan_scrap_date" property="planScrapDate" jdbcType="DATE" />
+    <result column="using_unit" property="usingUnit" jdbcType="VARCHAR" />
+    <result column="device_status" property="deviceStatus" jdbcType="VARCHAR" />
+    <result column="start_use_date" property="startUseDate" jdbcType="DATE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    guid, device_id, device_type, price, device_version, bought_date, leading_official, production_date,
+    phone_number, yearly_inspection_status, quaterly_inspection_date, monthly_inspection_date, 
+    manufacturer, is_rebuild_device, maintenance_period, plan_scrap_date, using_unit, 
+    device_status, start_use_date, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from device
+    where guid = #{guid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from device
+    where guid = #{guid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hkntv.riims.core.entity.Device" >
+    insert into device (guid, device_id, device_type, price,
+      device_version, bought_date, leading_official, 
+      production_date, phone_number, yearly_inspection_status, 
+      quaterly_inspection_date, monthly_inspection_date, 
+      manufacturer, is_rebuild_device, maintenance_period, 
+      plan_scrap_date, using_unit, device_status, 
+      start_use_date, remark)
+    values (#{guid,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, #{deviceType,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR},
+      #{deviceVersion,jdbcType=VARCHAR}, #{boughtDate,jdbcType=DATE}, #{leadingOfficial,jdbcType=VARCHAR}, 
+      #{productionDate,jdbcType=DATE}, #{phoneNumber,jdbcType=VARCHAR}, #{yearlyInspectionStatus,jdbcType=VARCHAR}, 
+      #{quaterlyInspectionDate,jdbcType=DATE}, #{monthlyInspectionDate,jdbcType=DATE}, 
+      #{manufacturer,jdbcType=VARCHAR}, #{isRebuildDevice,jdbcType=VARCHAR}, #{maintenancePeriod,jdbcType=DATE}, 
+      #{planScrapDate,jdbcType=DATE}, #{usingUnit,jdbcType=VARCHAR}, #{deviceStatus,jdbcType=VARCHAR}, 
+      #{startUseDate,jdbcType=DATE}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hkntv.riims.core.entity.Device" >
+    insert into device
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        guid,
+      </if>
+      <if test="deviceId != null" >
+        device_id,
+      </if>
+      <if test="deviceType != null" >
+        device_type,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="deviceVersion != null" >
+        device_version,
+      </if>
+      <if test="boughtDate != null" >
+        bought_date,
+      </if>
+      <if test="leadingOfficial != null" >
+        leading_official,
+      </if>
+      <if test="productionDate != null" >
+        production_date,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="yearlyInspectionStatus != null" >
+        yearly_inspection_status,
+      </if>
+      <if test="quaterlyInspectionDate != null" >
+        quaterly_inspection_date,
+      </if>
+      <if test="monthlyInspectionDate != null" >
+        monthly_inspection_date,
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer,
+      </if>
+      <if test="isRebuildDevice != null" >
+        is_rebuild_device,
+      </if>
+      <if test="maintenancePeriod != null" >
+        maintenance_period,
+      </if>
+      <if test="planScrapDate != null" >
+        plan_scrap_date,
+      </if>
+      <if test="usingUnit != null" >
+        using_unit,
+      </if>
+      <if test="deviceStatus != null" >
+        device_status,
+      </if>
+      <if test="startUseDate != null" >
+        start_use_date,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null" >
+        #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceVersion != null" >
+        #{deviceVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="boughtDate != null" >
+        #{boughtDate,jdbcType=DATE},
+      </if>
+      <if test="leadingOfficial != null" >
+        #{leadingOfficial,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null" >
+        #{productionDate,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="yearlyInspectionStatus != null" >
+        #{yearlyInspectionStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="quaterlyInspectionDate != null" >
+        #{quaterlyInspectionDate,jdbcType=DATE},
+      </if>
+      <if test="monthlyInspectionDate != null" >
+        #{monthlyInspectionDate,jdbcType=DATE},
+      </if>
+      <if test="manufacturer != null" >
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="isRebuildDevice != null" >
+        #{isRebuildDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="maintenancePeriod != null" >
+        #{maintenancePeriod,jdbcType=DATE},
+      </if>
+      <if test="planScrapDate != null" >
+        #{planScrapDate,jdbcType=DATE},
+      </if>
+      <if test="usingUnit != null" >
+        #{usingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceStatus != null" >
+        #{deviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startUseDate != null" >
+        #{startUseDate,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hkntv.riims.core.entity.Device" >
+    update device
+    <set >
+      <if test="deviceId != null" >
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null" >
+        device_type = #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceVersion != null" >
+        device_version = #{deviceVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="boughtDate != null" >
+        bought_date = #{boughtDate,jdbcType=DATE},
+      </if>
+      <if test="leadingOfficial != null" >
+        leading_official = #{leadingOfficial,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null" >
+        production_date = #{productionDate,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="yearlyInspectionStatus != null" >
+        yearly_inspection_status = #{yearlyInspectionStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="quaterlyInspectionDate != null" >
+        quaterly_inspection_date = #{quaterlyInspectionDate,jdbcType=DATE},
+      </if>
+      <if test="monthlyInspectionDate != null" >
+        monthly_inspection_date = #{monthlyInspectionDate,jdbcType=DATE},
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="isRebuildDevice != null" >
+        is_rebuild_device = #{isRebuildDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="maintenancePeriod != null" >
+        maintenance_period = #{maintenancePeriod,jdbcType=DATE},
+      </if>
+      <if test="planScrapDate != null" >
+        plan_scrap_date = #{planScrapDate,jdbcType=DATE},
+      </if>
+      <if test="usingUnit != null" >
+        using_unit = #{usingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceStatus != null" >
+        device_status = #{deviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startUseDate != null" >
+        start_use_date = #{startUseDate,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hkntv.riims.core.entity.Device" >
+    update device
+    set device_id = #{deviceId,jdbcType=VARCHAR},
+      device_type = #{deviceType,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      device_version = #{deviceVersion,jdbcType=VARCHAR},
+      bought_date = #{boughtDate,jdbcType=DATE},
+      leading_official = #{leadingOfficial,jdbcType=VARCHAR},
+      production_date = #{productionDate,jdbcType=DATE},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      yearly_inspection_status = #{yearlyInspectionStatus,jdbcType=VARCHAR},
+      quaterly_inspection_date = #{quaterlyInspectionDate,jdbcType=DATE},
+      monthly_inspection_date = #{monthlyInspectionDate,jdbcType=DATE},
+      manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      is_rebuild_device = #{isRebuildDevice,jdbcType=VARCHAR},
+      maintenance_period = #{maintenancePeriod,jdbcType=DATE},
+      plan_scrap_date = #{planScrapDate,jdbcType=DATE},
+      using_unit = #{usingUnit,jdbcType=VARCHAR},
+      device_status = #{deviceStatus,jdbcType=VARCHAR},
+      start_use_date = #{startUseDate,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR}
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectCount" resultType="java.lang.Integer" parameterType="com.hkntv.riims.core.entity.Device" >
+    select count(*) from device
+    <where >
+      <if test="guid != null" >
+        and guid = #{guid,jdbcType=VARCHAR}
+      </if>
+      <if test="deviceId != null" >
+        and device_id = #{deviceId,jdbcType=VARCHAR}
+      </if>
+      <if test="deviceType != null" >
+        and device_type = #{deviceType,jdbcType=VARCHAR}
+      </if>
+      <if test="price != null" >
+        and price = #{price,jdbcType=VARCHAR}
+      </if>
+      <if test="deviceVersion != null" >
+        and device_version = #{deviceVersion,jdbcType=VARCHAR}
+      </if>
+      <if test="boughtDate != null" >
+        and bought_date = #{boughtDate,jdbcType=DATE}
+      </if>
+      <if test="leadingOfficial != null" >
+        and leading_official = #{leadingOfficial,jdbcType=VARCHAR}
+      </if>
+      <if test="productionDate != null" >
+        and production_date = #{productionDate,jdbcType=DATE}
+      </if>
+      <if test="phoneNumber != null" >
+        and phone_number = #{phoneNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="yearlyInspectionStatus != null" >
+        and yearly_inspection_status = #{yearlyInspectionStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="quaterlyInspectionDate != null" >
+        and quaterly_inspection_date = #{quaterlyInspectionDate,jdbcType=DATE}
+      </if>
+      <if test="monthlyInspectionDate != null" >
+        and monthly_inspection_date = #{monthlyInspectionDate,jdbcType=DATE}
+      </if>
+      <if test="manufacturer != null" >
+        and manufacturer = #{manufacturer,jdbcType=VARCHAR}
+      </if>
+      <if test="isRebuildDevice != null" >
+        and is_rebuild_device = #{isRebuildDevice,jdbcType=VARCHAR}
+      </if>
+      <if test="maintenancePeriod != null" >
+        and maintenance_period = #{maintenancePeriod,jdbcType=DATE}
+      </if>
+      <if test="planScrapDate != null" >
+        and plan_scrap_date = #{planScrapDate,jdbcType=DATE}
+      </if>
+      <if test="usingUnit != null" >
+        and using_unit = #{usingUnit,jdbcType=VARCHAR}
+      </if>
+      <if test="deviceStatus != null" >
+        and device_status = #{deviceStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="startUseDate != null" >
+        and start_use_date = #{startUseDate,jdbcType=DATE}
+      </if>
+      <if test="remark != null" >
+        and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectPage" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from device where 1 = 1 
+    <if test="param1.guid != null" >
+      and guid = #{param1.guid,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.deviceId != null" >
+      and device_id = #{param1.deviceId,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.deviceType != null" >
+      and device_type = #{param1.deviceType,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.price != null" >
+      and price = #{param1.price,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.deviceVersion != null" >
+      and device_version = #{param1.deviceVersion,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.boughtDate != null" >
+      and bought_date = #{param1.boughtDate,jdbcType=DATE}
+    </if>
+    <if test="param1.leadingOfficial != null" >
+      and leading_official = #{param1.leadingOfficial,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.productionDate != null" >
+      and production_date = #{param1.productionDate,jdbcType=DATE}
+    </if>
+    <if test="param1.phoneNumber != null" >
+      and phone_number = #{param1.phoneNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.yearlyInspectionStatus != null" >
+      and yearly_inspection_status = #{param1.yearlyInspectionStatus,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.quaterlyInspectionDate != null" >
+      and quaterly_inspection_date = #{param1.quaterlyInspectionDate,jdbcType=DATE}
+    </if>
+    <if test="param1.monthlyInspectionDate != null" >
+      and monthly_inspection_date = #{param1.monthlyInspectionDate,jdbcType=DATE}
+    </if>
+    <if test="param1.manufacturer != null" >
+      and manufacturer = #{param1.manufacturer,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.isRebuildDevice != null" >
+      and is_rebuild_device = #{param1.isRebuildDevice,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.maintenancePeriod != null" >
+      and maintenance_period = #{param1.maintenancePeriod,jdbcType=DATE}
+    </if>
+    <if test="param1.planScrapDate != null" >
+      and plan_scrap_date = #{param1.planScrapDate,jdbcType=DATE}
+    </if>
+    <if test="param1.usingUnit != null" >
+      and using_unit = #{param1.usingUnit,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.deviceStatus != null" >
+      and device_status = #{param1.deviceStatus,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.startUseDate != null" >
+      and start_use_date = #{param1.startUseDate,jdbcType=DATE}
+    </if>
+    <if test="param1.remark != null" >
+      and remark = #{param1.remark,jdbcType=VARCHAR}
+    </if>
+    <if test="param2.sort != null" >
+      order by 
+      <foreach collection="param2.sort" item="order" separator="," >
+        ${order.property} ${order.direction}
+      </foreach>
+    </if>
+    <if test="param2.offset >= 0 and param2.pageSize > 0" >
+      limit ${param2.offset}, ${param2.pageSize}
+    </if>
+  </select>
+</mapper>

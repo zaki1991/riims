@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkntv.riims.core.repository.LineInfoRepository" >
+  <resultMap id="BaseResultMap" type="com.hkntv.riims.core.entity.LineInfo" >
+    <id column="guid" property="guid" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="line_name" property="lineName" jdbcType="VARCHAR" />
+    <result column="line_direction" property="lineDirection" jdbcType="VARCHAR" />
+    <result column="start_mileage" property="startMileage" jdbcType="DOUBLE" />
+    <result column="end_mileage" property="endMileage" jdbcType="DOUBLE" />
+    <result column="extension_length" property="extensionLength" jdbcType="DOUBLE" />
+    <result column="rail_laying_date" property="railLayingDate" jdbcType="DATE" />
+    <result column="rail_type" property="railType" jdbcType="VARCHAR" />
+    <result column="pre_year_pass_weight" property="preYearPassWeight" jdbcType="DOUBLE" />
+    <result column="min_yearly_inspection_number" property="minYearlyInspectionNumber" jdbcType="INTEGER" />
+    <result column="find_severe_wound" property="findSevereWound" jdbcType="INTEGER" />
+    <result column="existing_wound_number" property="existingWoundNumber" jdbcType="INTEGER" />
+    <result column="wound_rate" property="woundRate" jdbcType="DOUBLE" />
+    <result column="current_rail_status_evaluate" property="currentRailStatusEvaluate" jdbcType="VARCHAR" />
+    <result column="yearly_inspection_number" property="yearlyInspectionNumber" jdbcType="INTEGER" />
+    <result column="inspection_area_insp_block_number" property="inspectionAreaInspBlockNumber" jdbcType="INTEGER" />
+    <result column="responsible_inspeciton_area" property="responsibleInspecitonArea" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    guid, id, line_name, line_direction, start_mileage, end_mileage, extension_length, 
+    rail_laying_date, rail_type, pre_year_pass_weight, min_yearly_inspection_number, 
+    find_severe_wound, existing_wound_number, wound_rate, current_rail_status_evaluate, 
+    yearly_inspection_number, inspection_area_insp_block_number, responsible_inspeciton_area, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from lineinfo
+    where guid = #{guid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from lineinfo
+    where guid = #{guid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hkntv.riims.core.entity.LineInfo" >
+    insert into lineinfo (guid, id, line_name, 
+      line_direction, start_mileage, end_mileage, 
+      extension_length, rail_laying_date, rail_type, 
+      pre_year_pass_weight, min_yearly_inspection_number, 
+      find_severe_wound, existing_wound_number, wound_rate, 
+      current_rail_status_evaluate, yearly_inspection_number, 
+      inspection_area_insp_block_number, responsible_inspeciton_area, 
+      remark)
+    values (#{guid,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{lineName,jdbcType=VARCHAR}, 
+      #{lineDirection,jdbcType=VARCHAR}, #{startMileage,jdbcType=DOUBLE}, #{endMileage,jdbcType=DOUBLE}, 
+      #{extensionLength,jdbcType=DOUBLE}, #{railLayingDate,jdbcType=DATE}, #{railType,jdbcType=VARCHAR}, 
+      #{preYearPassWeight,jdbcType=DOUBLE}, #{minYearlyInspectionNumber,jdbcType=INTEGER}, 
+      #{findSevereWound,jdbcType=INTEGER}, #{existingWoundNumber,jdbcType=INTEGER}, #{woundRate,jdbcType=DOUBLE}, 
+      #{currentRailStatusEvaluate,jdbcType=VARCHAR}, #{yearlyInspectionNumber,jdbcType=INTEGER}, 
+      #{inspectionAreaInspBlockNumber,jdbcType=INTEGER}, #{responsibleInspecitonArea,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hkntv.riims.core.entity.LineInfo" >
+    insert into lineinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        guid,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lineName != null" >
+        line_name,
+      </if>
+      <if test="lineDirection != null" >
+        line_direction,
+      </if>
+      <if test="startMileage != null" >
+        start_mileage,
+      </if>
+      <if test="endMileage != null" >
+        end_mileage,
+      </if>
+      <if test="extensionLength != null" >
+        extension_length,
+      </if>
+      <if test="railLayingDate != null" >
+        rail_laying_date,
+      </if>
+      <if test="railType != null" >
+        rail_type,
+      </if>
+      <if test="preYearPassWeight != null" >
+        pre_year_pass_weight,
+      </if>
+      <if test="minYearlyInspectionNumber != null" >
+        min_yearly_inspection_number,
+      </if>
+      <if test="findSevereWound != null" >
+        find_severe_wound,
+      </if>
+      <if test="existingWoundNumber != null" >
+        existing_wound_number,
+      </if>
+      <if test="woundRate != null" >
+        wound_rate,
+      </if>
+      <if test="currentRailStatusEvaluate != null" >
+        current_rail_status_evaluate,
+      </if>
+      <if test="yearlyInspectionNumber != null" >
+        yearly_inspection_number,
+      </if>
+      <if test="inspectionAreaInspBlockNumber != null" >
+        inspection_area_insp_block_number,
+      </if>
+      <if test="responsibleInspecitonArea != null" >
+        responsible_inspeciton_area,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="lineName != null" >
+        #{lineName,jdbcType=VARCHAR},
+      </if>
+      <if test="lineDirection != null" >
+        #{lineDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="startMileage != null" >
+        #{startMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="endMileage != null" >
+        #{endMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="extensionLength != null" >
+        #{extensionLength,jdbcType=DOUBLE},
+      </if>
+      <if test="railLayingDate != null" >
+        #{railLayingDate,jdbcType=DATE},
+      </if>
+      <if test="railType != null" >
+        #{railType,jdbcType=VARCHAR},
+      </if>
+      <if test="preYearPassWeight != null" >
+        #{preYearPassWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="minYearlyInspectionNumber != null" >
+        #{minYearlyInspectionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="findSevereWound != null" >
+        #{findSevereWound,jdbcType=INTEGER},
+      </if>
+      <if test="existingWoundNumber != null" >
+        #{existingWoundNumber,jdbcType=INTEGER},
+      </if>
+      <if test="woundRate != null" >
+        #{woundRate,jdbcType=DOUBLE},
+      </if>
+      <if test="currentRailStatusEvaluate != null" >
+        #{currentRailStatusEvaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="yearlyInspectionNumber != null" >
+        #{yearlyInspectionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="inspectionAreaInspBlockNumber != null" >
+        #{inspectionAreaInspBlockNumber,jdbcType=INTEGER},
+      </if>
+      <if test="responsibleInspecitonArea != null" >
+        #{responsibleInspecitonArea,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hkntv.riims.core.entity.LineInfo" >
+    update lineinfo
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="lineName != null" >
+        line_name = #{lineName,jdbcType=VARCHAR},
+      </if>
+      <if test="lineDirection != null" >
+        line_direction = #{lineDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="startMileage != null" >
+        start_mileage = #{startMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="endMileage != null" >
+        end_mileage = #{endMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="extensionLength != null" >
+        extension_length = #{extensionLength,jdbcType=DOUBLE},
+      </if>
+      <if test="railLayingDate != null" >
+        rail_laying_date = #{railLayingDate,jdbcType=DATE},
+      </if>
+      <if test="railType != null" >
+        rail_type = #{railType,jdbcType=VARCHAR},
+      </if>
+      <if test="preYearPassWeight != null" >
+        pre_year_pass_weight = #{preYearPassWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="minYearlyInspectionNumber != null" >
+        min_yearly_inspection_number = #{minYearlyInspectionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="findSevereWound != null" >
+        find_severe_wound = #{findSevereWound,jdbcType=INTEGER},
+      </if>
+      <if test="existingWoundNumber != null" >
+        existing_wound_number = #{existingWoundNumber,jdbcType=INTEGER},
+      </if>
+      <if test="woundRate != null" >
+        wound_rate = #{woundRate,jdbcType=DOUBLE},
+      </if>
+      <if test="currentRailStatusEvaluate != null" >
+        current_rail_status_evaluate = #{currentRailStatusEvaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="yearlyInspectionNumber != null" >
+        yearly_inspection_number = #{yearlyInspectionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="inspectionAreaInspBlockNumber != null" >
+        inspection_area_insp_block_number = #{inspectionAreaInspBlockNumber,jdbcType=INTEGER},
+      </if>
+      <if test="responsibleInspecitonArea != null" >
+        responsible_inspeciton_area = #{responsibleInspecitonArea,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hkntv.riims.core.entity.LineInfo" >
+    update lineinfo
+    set id = #{id,jdbcType=VARCHAR},
+      line_name = #{lineName,jdbcType=VARCHAR},
+      line_direction = #{lineDirection,jdbcType=VARCHAR},
+      start_mileage = #{startMileage,jdbcType=DOUBLE},
+      end_mileage = #{endMileage,jdbcType=DOUBLE},
+      extension_length = #{extensionLength,jdbcType=DOUBLE},
+      rail_laying_date = #{railLayingDate,jdbcType=DATE},
+      rail_type = #{railType,jdbcType=VARCHAR},
+      pre_year_pass_weight = #{preYearPassWeight,jdbcType=DOUBLE},
+      min_yearly_inspection_number = #{minYearlyInspectionNumber,jdbcType=INTEGER},
+      find_severe_wound = #{findSevereWound,jdbcType=INTEGER},
+      existing_wound_number = #{existingWoundNumber,jdbcType=INTEGER},
+      wound_rate = #{woundRate,jdbcType=DOUBLE},
+      current_rail_status_evaluate = #{currentRailStatusEvaluate,jdbcType=VARCHAR},
+      yearly_inspection_number = #{yearlyInspectionNumber,jdbcType=INTEGER},
+      inspection_area_insp_block_number = #{inspectionAreaInspBlockNumber,jdbcType=INTEGER},
+      responsible_inspeciton_area = #{responsibleInspecitonArea,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectCount" resultType="java.lang.Integer" parameterType="com.hkntv.riims.core.entity.LineInfo" >
+    select count(*) from lineinfo
+    <where >
+      <if test="guid != null" >
+        and guid = #{guid,jdbcType=VARCHAR}
+      </if>
+      <if test="id != null" >
+        and id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="lineName != null" >
+        and line_name = #{lineName,jdbcType=VARCHAR}
+      </if>
+      <if test="lineDirection != null" >
+        and line_direction = #{lineDirection,jdbcType=VARCHAR}
+      </if>
+      <if test="startMileage != null" >
+        and start_mileage = #{startMileage,jdbcType=DOUBLE}
+      </if>
+      <if test="endMileage != null" >
+        and end_mileage = #{endMileage,jdbcType=DOUBLE}
+      </if>
+      <if test="extensionLength != null" >
+        and extension_length = #{extensionLength,jdbcType=DOUBLE}
+      </if>
+      <if test="railLayingDate != null" >
+        and rail_laying_date = #{railLayingDate,jdbcType=DATE}
+      </if>
+      <if test="railType != null" >
+        and rail_type = #{railType,jdbcType=VARCHAR}
+      </if>
+      <if test="preYearPassWeight != null" >
+        and pre_year_pass_weight = #{preYearPassWeight,jdbcType=DOUBLE}
+      </if>
+      <if test="minYearlyInspectionNumber != null" >
+        and min_yearly_inspection_number = #{minYearlyInspectionNumber,jdbcType=INTEGER}
+      </if>
+      <if test="findSevereWound != null" >
+        and find_severe_wound = #{findSevereWound,jdbcType=INTEGER}
+      </if>
+      <if test="existingWoundNumber != null" >
+        and existing_wound_number = #{existingWoundNumber,jdbcType=INTEGER}
+      </if>
+      <if test="woundRate != null" >
+        and wound_rate = #{woundRate,jdbcType=DOUBLE}
+      </if>
+      <if test="currentRailStatusEvaluate != null" >
+        and current_rail_status_evaluate = #{currentRailStatusEvaluate,jdbcType=VARCHAR}
+      </if>
+      <if test="yearlyInspectionNumber != null" >
+        and yearly_inspection_number = #{yearlyInspectionNumber,jdbcType=INTEGER}
+      </if>
+      <if test="inspectionAreaInspBlockNumber != null" >
+        and inspection_area_insp_block_number = #{inspectionAreaInspBlockNumber,jdbcType=INTEGER}
+      </if>
+      <if test="responsibleInspecitonArea != null" >
+        and responsible_inspeciton_area = #{responsibleInspecitonArea,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null" >
+        and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectPage" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from lineinfo where 1 = 1 
+    <if test="param1.guid != null" >
+      and guid = #{param1.guid,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.id != null" >
+      and id = #{param1.id,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.lineName != null" >
+      and line_name = #{param1.lineName,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.lineDirection != null" >
+      and line_direction = #{param1.lineDirection,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.startMileage != null" >
+      and start_mileage = #{param1.startMileage,jdbcType=DOUBLE}
+    </if>
+    <if test="param1.endMileage != null" >
+      and end_mileage = #{param1.endMileage,jdbcType=DOUBLE}
+    </if>
+    <if test="param1.extensionLength != null" >
+      and extension_length = #{param1.extensionLength,jdbcType=DOUBLE}
+    </if>
+    <if test="param1.railLayingDate != null" >
+      and rail_laying_date = #{param1.railLayingDate,jdbcType=DATE}
+    </if>
+    <if test="param1.railType != null" >
+      and rail_type = #{param1.railType,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.preYearPassWeight != null" >
+      and pre_year_pass_weight = #{param1.preYearPassWeight,jdbcType=DOUBLE}
+    </if>
+    <if test="param1.minYearlyInspectionNumber != null" >
+      and min_yearly_inspection_number = #{param1.minYearlyInspectionNumber,jdbcType=INTEGER}
+    </if>
+    <if test="param1.findSevereWound != null" >
+      and find_severe_wound = #{param1.findSevereWound,jdbcType=INTEGER}
+    </if>
+    <if test="param1.existingWoundNumber != null" >
+      and existing_wound_number = #{param1.existingWoundNumber,jdbcType=INTEGER}
+    </if>
+    <if test="param1.woundRate != null" >
+      and wound_rate = #{param1.woundRate,jdbcType=DOUBLE}
+    </if>
+    <if test="param1.currentRailStatusEvaluate != null" >
+      and current_rail_status_evaluate = #{param1.currentRailStatusEvaluate,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.yearlyInspectionNumber != null" >
+      and yearly_inspection_number = #{param1.yearlyInspectionNumber,jdbcType=INTEGER}
+    </if>
+    <if test="param1.inspectionAreaInspBlockNumber != null" >
+      and inspection_area_insp_block_number = #{param1.inspectionAreaInspBlockNumber,jdbcType=INTEGER}
+    </if>
+    <if test="param1.responsibleInspecitonArea != null" >
+      and responsible_inspeciton_area = #{param1.responsibleInspecitonArea,jdbcType=VARCHAR}
+    </if>
+    <if test="param1.remark != null" >
+      and remark = #{param1.remark,jdbcType=VARCHAR}
+    </if>
+    <if test="param2.sort != null" >
+      order by 
+      <foreach collection="param2.sort" item="order" separator="," >
+        ${order.property} ${order.direction}
+      </foreach>
+    </if>
+    <if test="param2.offset >= 0 and param2.pageSize > 0" >
+      limit ${param2.offset}, ${param2.pageSize}
+    </if>
+  </select>
+</mapper>

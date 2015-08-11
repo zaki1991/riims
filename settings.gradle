@@ -1,0 +1,4 @@
+rootProject.name = 'riims'
+include 'riims-service-api'
+include 'riims-service'
+include 'riims-webapp'
